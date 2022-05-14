@@ -1,6 +1,10 @@
 {
   "name": "worker-pipe",
   "private": true,
+  "scripts": {
+    "dev": "yarn workspace site dev",
+    "start": "yarn workspace site dev"
+  },
   "workspaces": [
     "apps/*"
   ],
