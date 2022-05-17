@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
-    optimizeDeps: {
-        exclude: ['ix'],
-    },
+  plugins: [react()],
+  optimizeDeps: {
+    exclude: ['ix', '@rxjs-ninja/rxjs-utility'],
+  },
 })

@@ -27,8 +27,6 @@ function processFromMainThread() {
   })
 }
 
-// const fromWorker = piStream(1000)
-
 ctx.onmessage = (event) => {
   const [readable, writable] = event.data
 
