@@ -413,7 +413,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash-es@npm:^4.17.5":
+"@types/lodash-es@npm:^4.17.6":
   version: 4.17.6
   resolution: "@types/lodash-es@npm:4.17.6"
   dependencies:
@@ -443,7 +443,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.0":
+"@types/react-dom@npm:^17.0.17":
   version: 17.0.17
   resolution: "@types/react-dom@npm:17.0.17"
   dependencies:
@@ -452,7 +452,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17, @types/react@npm:^17.0.0":
+"@types/react@npm:^17, @types/react@npm:^17.0.45":
   version: 17.0.45
   resolution: "@types/react@npm:17.0.45"
   dependencies:
@@ -470,14 +470,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/uuid@npm:^8.3.1":
+"@types/uuid@npm:^8.3.4":
   version: 8.3.4
   resolution: "@types/uuid@npm:8.3.4"
   checksum: 6f11f3ff70f30210edaa8071422d405e9c1d4e53abbe50fdce365150d3c698fe7bbff65c1e71ae080cbfb8fded860dbb5e174da96fdbbdfcaa3fb3daa474d20f
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:^1.0.0":
+"@vitejs/plugin-react@npm:^1.3.2":
   version: 1.3.2
   resolution: "@vitejs/plugin-react@npm:1.3.2"
   dependencies:
@@ -1289,6 +1289,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-generator@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "json-generator@npm:0.3.1"
+  checksum: b57b44a683b6ae7687d3a9ffb191df83de5acefa46723add3aab1c69c1a7fa923da4265761ca609795acd0be6205bceea11ae354dd31c11f9135602c218dea85
+  languageName: node
+  linkType: hard
+
 "json5@npm:^2.2.1":
   version: 2.2.1
   resolution: "json5@npm:2.2.1"
@@ -1597,7 +1604,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.4.1":
+"prettier@npm:^2.6.2":
   version: 2.6.2
   resolution: "prettier@npm:2.6.2"
   bin:
@@ -1623,7 +1630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.0":
+"react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -1643,7 +1650,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.0":
+"react@npm:^17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:
@@ -1722,7 +1729,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^7.4.0":
+"rxjs@npm:^7.5.5":
   version: 7.5.5
   resolution: "rxjs@npm:7.5.5"
   dependencies:
@@ -1802,21 +1809,22 @@ __metadata:
   dependencies:
     "@reactivex/ix-ts": ^4.5.2
     "@rxjs-ninja/rxjs-utility": ^5.1.2
-    "@types/lodash-es": ^4.17.5
-    "@types/react": ^17.0.0
-    "@types/react-dom": ^17.0.0
-    "@types/uuid": ^8.3.1
-    "@vitejs/plugin-react": ^1.0.0
+    "@types/lodash-es": ^4.17.6
+    "@types/react": ^17.0.45
+    "@types/react-dom": ^17.0.17
+    "@types/uuid": ^8.3.4
+    "@vitejs/plugin-react": ^1.3.2
     ix: ^4.5.2
+    json-generator: ^0.3.1
     lodash-es: ^4.17.21
-    prettier: ^2.4.1
-    react: ^17.0.0
-    react-dom: ^17.0.0
-    rxjs: ^7.4.0
-    typescript: ^4.3.2
+    prettier: ^2.6.2
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    rxjs: ^7.5.5
+    typescript: ^4.7.2
     utility-types: ^3.10.0
     uuid: ^8.3.2
-    vite: ^2.6.0
+    vite: ^2.9.9
   languageName: unknown
   linkType: soft
 
@@ -1937,23 +1945,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.3.2, typescript@npm:^4.6.4":
-  version: 4.6.4
-  resolution: "typescript@npm:4.6.4"
+"typescript@npm:^4.7.2":
+  version: 4.7.2
+  resolution: "typescript@npm:4.7.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: e7bfcc39cd4571a63a54e5ea21f16b8445268b9900bf55aee0e02ad981be576acc140eba24f1af5e3c1457767c96cea6d12861768fb386cf3ffb34013718631a
+  checksum: 5163585e6b56410f77d5483b698d9489bbee8902c99029eb70cf6d21525a186530ce19a00951af84eefd4a131cc51d0959f5118e25e70ab61f45ac4057dbd1ef
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.3.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
-  version: 4.6.4
-  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=493e53"
+"typescript@patch:typescript@^4.7.2#~builtin<compat/typescript>":
+  version: 4.7.2
+  resolution: "typescript@patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=493e53"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 8cff08bf66d9ecfbf9fcc5edde04a5a7923e6cac3b21d99b4e9a06973bf5bd7f9a83ec7eed24129c1b9e13fd861de8c1070110d4b9ce9f18ab57c6999e9c9a6f
+  checksum: 09d93fc0983d38eadd9b0427f790b49b4437f45002a87d447be3fbe53120880e87a91dd03e1d900498f99205d6e0b7c9784fe41fca11d56f4bbce371f74bb160
   languageName: node
   linkType: hard
 
@@ -1998,7 +2006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^2.6.0":
+"vite@npm:^2.9.9":
   version: 2.9.9
   resolution: "vite@npm:2.9.9"
   dependencies:
@@ -2051,7 +2059,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "worker-pipe@workspace:."
   dependencies:
-    typescript: ^4.6.4
+    typescript: ^4.7.2
   languageName: unknown
   linkType: soft
 
