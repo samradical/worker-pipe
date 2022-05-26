@@ -107,7 +107,7 @@ function App() {
 
   useEffect(() => {
     let i = setInterval(function () {
-      if (textRef.current) {
+      if (textRef.current && tail) {
         textRef.current.scrollTop = textRef.current.scrollHeight
       }
     }, 200)
