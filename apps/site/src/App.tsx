@@ -29,9 +29,11 @@ function forwardWorkerPayload(output$: Subject<any>) {
   return new WritableStream({
     write(chunk: string) {
       const d = JSON.parse(chunk)
-      const status = `payload is  ~${chunk.length * 1e-6}Mb. Took ${
+      const status = `payload is  ~${(chunk.length * 1e-6).toFixed(
+        6,
+      )}Mb (${d.timeToGenerate.toFixed(4)}ms to gen). Took ${(
         performance.now() - d.timestamp
-      }ms to receive & parse`
+      ).toFixed(4)}ms to receive & parse`
       output$.next({
         d,
         status,

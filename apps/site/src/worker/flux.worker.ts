@@ -117,6 +117,7 @@ const intensityMap = {
 }
 type Intensities = keyof typeof intensityMap
 function doSomeSmallWork(i: Intensities) {
+  let s = performance.now()
   const payload = generateJson({
     id: 'id;objectId',
     children: [
@@ -166,6 +167,7 @@ function doSomeSmallWork(i: Intensities) {
 
   return JSON.stringify({
     timestamp: performance.now(),
+    timeToGenerate: performance.now() - s,
     payload,
   })
 }
@@ -220,7 +222,7 @@ ctx.onmessage = (event) => {
     ),
     play$.pipe(
       switchMap(() =>
-        timer(0, 16).pipe(
+        timer(0, 100).pipe(
           map((val) => doSomeSmallWork(state.intensity)),
           tap((chunk) => sendFluxData$.next(chunk)),
           takeUntil(pause$),
