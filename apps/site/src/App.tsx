@@ -72,8 +72,9 @@ function App() {
   const [writeToWorker, setSub1] = useState('play')
   const [status, setStatus] = useState('')
   const [intensity, setIntense] = useState(1)
-  const ref = createRef<HTMLImageElement>()
-  const textRef = createRef<HTMLTextAreaElement>()
+  const [tail, setTail] = useState(true)
+  const ref = useRef<HTMLImageElement | null>(null)
+  const textRef = useRef<HTMLTextAreaElement | null>(null)
   const rxWorkerFlux = useRef<ReturnType<typeof setupRxWorkerFlux>>()
   useEffect(() => {
     rxWorkerFlux.current = setupRxWorkerFlux()
@@ -101,6 +102,15 @@ function App() {
   useEffect(() => {
     rxWorkerFlux.current?.write(`intensity_${intensity}`)
   }, [intensity])
+
+  useEffect(() => {
+    let i = setInterval(function () {
+      if (textRef.current) {
+        textRef.current.scrollTop = textRef.current.scrollHeight
+      }
+    }, 200)
+    return () => clearInterval(i)
+  }, [tail])
 
   useEffect(() => {
     if (!ref.current) return
@@ -135,12 +145,20 @@ function App() {
         <button onClick={() => setSub1((s) => 'pause')}>pause</button>
         <button onClick={() => setSub1((s) => 'play')}>play</button>
         <div>intensity: {intensity}</div>
-        <button onClick={() => setIntense((s) => Math.min(s + 1, 7))}>
+        <button onClick={() => setIntense((s) => Math.min(s + 1, 8))}>
           + data
         </button>
         <button onClick={() => setIntense((s) => Math.max(s - 1, 1))}>
           - data
         </button>
+        <span>tail?</span>
+        <input
+          type="checkbox"
+          onChange={(e) => {
+            setTail(e.currentTarget.checked)
+          }}
+          checked={tail}
+        />
         <textarea
           ref={textRef}
           id="story"

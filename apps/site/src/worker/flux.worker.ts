@@ -109,6 +109,11 @@ const intensityMap = {
     jobs: 384,
     people: 48,
   },
+  8: {
+    children: 256,
+    jobs: 768,
+    people: 96,
+  },
 }
 type Intensities = keyof typeof intensityMap
 function doSomeSmallWork(i: Intensities) {
@@ -223,7 +228,7 @@ ctx.onmessage = (event) => {
       ),
     ),
     sendFluxData$.pipe(toWritableStream(toMainThread.writable)),
-    // sendStatus$.pipe(toWritableStream(writable)),
+    sendStatus$.pipe(toWritableStream(writable)),
   ).subscribe()
 
   //@ts-expect-error Transferable doesnnt include streams
