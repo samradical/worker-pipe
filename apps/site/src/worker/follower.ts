@@ -1,5 +1,4 @@
-const ctx: SharedWorker = self as any
-
+//@ts-expect-error
 ctx.onconnect = function (e) {
   const leaderFolloweChannel = new MessageChannel()
   var mainthreadPort = e.ports[0]
@@ -7,12 +6,6 @@ ctx.onconnect = function (e) {
 
   mainthreadPort.onmessage = function (e) {
     const { port, id } = e.data
-
-    // port.onmessage = function (workerE) {
-    //   const encoder = new TextDecoder()
-    //   const view = encoder.decode(workerE.data)
-    //   mainthreadPort.postMessage([`leader told me: ${view}`])
-    // }
 
     leaderFolloweChannel.port2.onmessage = function (leaderEvt) {
       const encoder = new TextDecoder()

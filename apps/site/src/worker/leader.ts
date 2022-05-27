@@ -1,3 +1,4 @@
+//@ts-expect-error
 self.onconnect = function (e) {
   console.log('leader connected')
   var mainThreadPort = e.ports[0]
