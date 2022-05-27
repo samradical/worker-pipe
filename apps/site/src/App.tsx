@@ -2,7 +2,9 @@ import { createRef, useEffect, useRef, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import Worker from './worker/flux.worker?worker'
+import FluxWorker from './worker/flux.worker?worker'
+import LeaderWorker from './worker/leader?sharedworker'
+import FollowerWorker from './worker/follower?sharedworker'
 import { fromEvent, merge, Subject } from 'rxjs'
 import { takeUntil, switchMap, tap, bufferTime } from 'rxjs/operators'
 
@@ -45,7 +47,7 @@ function forwardWorkerPayload(output$: Subject<any>) {
   })
 }
 
-export const setupRxWorkerFlux = () => {
+export const setupRxWorkerFlux = (Worker: new () => Worker) => {
   const worker = new Worker()
   const output$ = new Subject<any>()
 
@@ -70,6 +72,36 @@ export const setupRxWorkerFlux = () => {
   }
 }
 
+export const setupSharedWorkersFlux = () => {
+  const f1Channel = new MessageChannel()
+  const f2Channel = new MessageChannel()
+  const leader = new LeaderWorker()
+  const follower1 = new FollowerWorker()
+  const follower2 = new FollowerWorker()
+  follower1.port.postMessage({ id: 'ONE', port: f1Channel.port1 }, [
+    f1Channel.port1,
+  ])
+  follower2.port.postMessage({ id: 'TWO', port: f2Channel.port1 }, [
+    f2Channel.port1,
+  ])
+
+  leader.port.postMessage(
+    {
+      id: 'LEADER',
+      initFollower1Port: f1Channel.port2,
+      initFollower2Port: f2Channel.port2,
+    },
+    [f1Channel.port2, f2Channel.port2],
+  )
+
+  follower1.port.onmessage = function (e) {
+    console.log(`follower ONE: Got from follower: ${e.data} `)
+  }
+  follower2.port.onmessage = function (e) {
+    console.log(`follower TWO: Got from follower: ${e.data} `)
+  }
+}
+
 function App() {
   const [writeToWorker, setSub1] = useState('play')
   const [status, setStatus] = useState('')
@@ -78,8 +110,14 @@ function App() {
   const ref = useRef<HTMLImageElement | null>(null)
   const textRef = useRef<HTMLTextAreaElement | null>(null)
   const rxWorkerFlux = useRef<ReturnType<typeof setupRxWorkerFlux>>()
+  // const followerWorkerFlux =
+  //   useRef<ReturnType<typeof setupSharedWorkerFlux>>()
+  // const leaderWorkerFlux =
+  //   useRef<ReturnType<typeof setupSharedWorkerFlux>>()
+
   useEffect(() => {
-    rxWorkerFlux.current = setupRxWorkerFlux()
+    rxWorkerFlux.current = setupRxWorkerFlux(FluxWorker)
+    setupSharedWorkersFlux()
   }, [])
 
   useEffect(() => {
@@ -102,6 +140,7 @@ function App() {
   }, [writeToWorker])
 
   useEffect(() => {
+    // leaderWorkerFlux.current?.write(`intensity_${intensity}`)
     rxWorkerFlux.current?.write(`intensity_${intensity}`)
   }, [intensity])
 
