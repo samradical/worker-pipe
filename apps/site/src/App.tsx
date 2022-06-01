@@ -93,12 +93,16 @@ export const setupSharedWorkersFlux = () => {
     },
     [f1Channel.port2, f2Channel.port2],
   )
-
   follower1.port.onmessage = function (e) {
-    console.log(`follower ONE: Got from follower: ${e.data} `)
+    console.log(e.data)
+    // console.log(
+    //   `follower ONE: Got from follower: ${e.data[0].length} `,
+    // )
   }
   follower2.port.onmessage = function (e) {
-    console.log(`follower TWO: Got from follower: ${e.data} `)
+    // console.log(
+    //   `follower TWO: Got from follower: ${e.data[0].length} `,
+    // )
   }
 }
 
